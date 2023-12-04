@@ -1,16 +1,24 @@
 from guizero import App, Text, TextBox, PushButton, Window
 
-#Funcao para login
-def fazer_login():
+#Funcao para verificação do login
+def verificar_login(usuario, senha):
     with open('cadastros.txt', 'r+', encoding='utf-8') as cadastros:
         nomes = cadastros.readlines()
         for linha in nomes:
-            user, senha = linha.strip().split(',')
-            if user == campo_user.value and senha == campo_senha.value:
-                abrir_jan_principal()
-                app.hide()
-    print("ACESSO NEGADO!")
-        
+            user, password = linha.strip().split(',')
+            if user == usuario and password == senha:
+                return True
+    return False
+
+#Funcao de login
+def fazer_login():
+    usuario_entrada = campo_user.value
+    senha_entrada = campo_senha.value
+    if verificar_login(usuario_entrada, senha_entrada):
+        abrir_jan_principal()
+        app.hide()
+    else:
+        print('ACESSO NEGADO')
 
 #Funcao de cancelar
 def cancelar():
