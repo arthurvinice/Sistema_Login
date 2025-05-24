@@ -35,6 +35,10 @@ def verificar_usuario(usuario, senha, codigo, app):
 
 def cadastrar_usuario(usuario, senha, codigo, app):
 
+    if not usuario.value or not senha.value or not codigo.value:
+        error(title="ERRO", text="Preencha todos os campos!")
+        return
+
     with open("arquivo.txt", "a") as dados:
         dados.write(f"{usuario.value},{senha.value},{codigo.value}")
         dados.write("\n")
@@ -139,15 +143,4 @@ def excluir_usuario(codigo,app):
 
         else:
             error(title="ERRO", text=f"Código de usuário {codigo} não encontrado!")
-
-
-def checkForm(usuario, senha, codigo):
-    if len(usuario.value) == 0:
-        error(title="ERRO", text="Usuário em branco!")
-    if len(senha.value) == 0:
-        error(title="ERRO", text="Senha em branco!")
-    if len(codigo.value) == 0:
-        error(title="ERRO", text="Código em branco!")
-    else:
-        return True
 
