@@ -140,3 +140,14 @@ def excluir_usuario(codigo,app):
         else:
             error(title="ERRO", text=f"Código de usuário {codigo} não encontrado!")
 
+
+def checkForm(usuario, senha, codigo):
+    if len(usuario.value) == 0:
+        error(title="ERRO", text="Usuário em branco!")
+    if len(senha.value) == 0:
+        error(title="ERRO", text="Senha em branco!")
+    if len(codigo.value) == 0:
+        error(title="ERRO", text="Código em branco!")
+    else:
+        return True
+

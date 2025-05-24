@@ -1,5 +1,5 @@
 from guizero import App, Text, TextBox, PushButton
-from Persistencia import verificar_usuario, buscar_usuario, excluir_usuario, login
+from Persistencia import verificar_usuario, buscar_usuario, excluir_usuario, login, checkForm
 
 #Limpar campos
 def limpar_campos():
@@ -49,7 +49,7 @@ btn_login.tk.config(cursor='hand2')
 
 text_nada3 = Text(app, text="", grid=[2,5] , height=1)
 
-btn_cadastrar = PushButton(app, text="Cadastrar", width=7, command=lambda: verificar_usuario(usuario, senha, codigo, app), grid=[2,6])
+btn_cadastrar = PushButton(app, text="Cadastrar", width=7, command=lambda: verificar_usuario(usuario, senha, codigo, app), command=lambda: checkForm(usuario, senha, codigo), grid=[2,6])
 btn_cadastrar.bg = '#6ca0dc'
 btn_cadastrar.text_color = 'white'
 btn_cadastrar.tk.config(cursor='hand2')
